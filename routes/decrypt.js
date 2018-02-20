@@ -12,6 +12,7 @@ class DecryptRouter {
   decrypt (ctx, next) {
     this.cryptoService.decrypt('testKeyName', 'ENCRYPTED_DATA_BLOB').then((data) => {
       ctx.body = data
+      next()
     })
   }
 

@@ -12,6 +12,7 @@ class EncryptRouter {
   encrypt (ctx, next) {
     this.cryptoService.encrypt('testKeyName', 'testPlaintextData').then((data) => {
       ctx.body = data
+      next()
     })
   }
 

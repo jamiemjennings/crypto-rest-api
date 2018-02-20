@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "test": "standard && mocha --recursive tests/"
   },
   "author": "Jamie Jennings <jamiemjennings@gmail.com> (https://github.com/jamiemjennings)",
   "license": "ISC",
@@ -16,6 +16,20 @@
     "koa-route": "^3.2.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1",
     "standard": "^11.0.0"
+  },
+  "standard": {
+    "globals": [
+      "after",
+      "afterAll",
+      "afterEach",
+      "before",
+      "beforeAll",
+      "beforeEach",
+      "describe",
+      "it"
+    ]
   }
 }
