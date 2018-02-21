@@ -1,9 +1,8 @@
 # Crypto REST API
 
-[![Build Status](https://travis-ci.org/jamiemjennings/crypto-rest-api.svg?branch=master)](https://travis-ci.org/jamiemjennings/crypto-rest-api)
+[![Build Status](https://travis-ci.org/jamiemjennings/crypto-rest-api.svg?branch=master)](https://travis-ci.org/jamiemjennings/crypto-rest-api) [![Greenkeeper badge](https://badges.greenkeeper.io/jamiemjennings/crypto-rest-api.svg)](https://greenkeeper.io/)
 
 This project is a work-in-progress. The intention is to build a multi-tenanted REST API for encryption/decryption of data, while learning some new technologies.
-
 ## To Run the Service Locally (outside Docker)
 ```
 node index.js
