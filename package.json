@@ -7,6 +7,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "standard && mocha --recursive tests/"
   },
   "author": "Jamie Jennings <jamiemjennings@gmail.com> (https://github.com/jamiemjennings)",
