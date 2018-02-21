@@ -1,0 +1,6 @@
+version: '3'
+services:
+  crypto-rest-api:
+    image: jamiemjennings/crypto-rest-api
+    ports:
+      - 8888:8080
