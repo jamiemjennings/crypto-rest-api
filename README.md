@@ -22,6 +22,11 @@ First build the service image using the instructions above, then:
 ```
 docker run -p 8888:8080 -d jamiemjennings/crypto-rest-api
 ```
+or you may use [docker-compose](https://docs.docker.com/compose/):
+```
+docker-compose up -d
+```
+
 Change `8888` to your preferred port on which to access the service on localhost.
 
 ## Test Service API
