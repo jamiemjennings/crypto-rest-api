@@ -1,11 +1,6 @@
 const Koa = require('koa')
 const app = new Koa()
 
-const EncryptRouter = require('./routes/encrypt')
-const encryptRouter = new EncryptRouter()
-const DecryptRouter = require('./routes/decrypt')
-const decryptRouter = new DecryptRouter()
-
 const HTTP_PORT = process.env.HTTP_PORT || 8080
 
 app.on('error', (err, ctx) => {
@@ -38,8 +33,8 @@ app.use(async (ctx, next) => {
   next()
 })
 
-encryptRouter.getRoutes().forEach((route) => { app.use(route) })
-decryptRouter.getRoutes().forEach((route) => { app.use(route) })
+const routes = require('./routes')
+routes.getRoutes().forEach((route) => { app.use(route) })
 
 app.listen(HTTP_PORT)
 console.log(`Service running on port ${HTTP_PORT}`)
