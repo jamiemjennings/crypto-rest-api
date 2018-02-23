@@ -1,1 +1,9 @@
 language: node_js
+
+language:
+  node_js
+install:
+  - npm install -g codecov
+script:
+  - nyc cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
