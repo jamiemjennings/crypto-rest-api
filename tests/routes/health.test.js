@@ -42,4 +42,47 @@ describe('HealthRouter', function () {
       assert.isNotEmpty(routes)
     })
   })
+  describe('_normalizeHealthPath()', function () {
+    let emptyTests = [
+      { val: null, desc: 'Returns default for null' },
+      { val: undefined, desc: 'Returns default for null' },
+      { val: '', desc: 'Returns default for empty string' }
+    ]
+    emptyTests.forEach((testData) => {
+      it(testData.desc, () => {
+        let val = HealthRouter._normalizeHealthPath(testData.val)
+        assert.equal(val, '/_health')
+      })
+    })
+    let invalidValTests = [
+      { val: '   ', desc: 'Throws error for whitespace' },
+      { val: '  \t', desc: 'Throws error for whitespace with tab' },
+      { val: 123, desc: 'Throws error for integer' },
+      { val: {}, desc: 'Throws error for Object' },
+      { val: [], desc: 'Throws error for array' },
+      { val: '/util/healthcheck', desc: 'Throws error for nested path' },
+      { val: '/healthcheck/', desc: 'Throws error for trailing slash' }
+    ]
+    invalidValTests.forEach((testData) => {
+      it(testData.desc, (done) => {
+        try {
+          HealthRouter._normalizeHealthPath(testData.val)
+        } catch (err) {
+          assert.isNotNull(err)
+          assert.equal(err, `Error: Invalid health path value: ${testData.val}`)
+          done()
+        }
+      })
+    })
+    let validTests = [
+      { input: '/foobar', expected: '/foobar', desc: 'Returns valid path' },
+      { input: 'foobar', expected: '/foobar', desc: 'Prepends / if not exists' }
+    ]
+    validTests.forEach((testData) => {
+      it(testData.desc, () => {
+        let val = HealthRouter._normalizeHealthPath(testData.input)
+        assert.equal(val, testData.expected)
+      })
+    })
+  })
 })
